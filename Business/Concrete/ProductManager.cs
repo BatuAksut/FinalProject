@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.CCS;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
@@ -34,13 +35,11 @@ public class ProductManager : IProductService
         _categoryService = categoryService;
 
     }
-
+    [SecuredOperation("product.add,admin")]
     [ValidationAspect(typeof(ProductValidator))]
     public IResult Add(Product product)
     {
         
-
-
         IResult result = BusinessRules.Run(CheckIfProductCountOfCategoryCorrect(product.CategoryId),
             CheckIfProductNameExists(product.ProductName),CheckIfCategoryLimitExceeded());
 
