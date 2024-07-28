@@ -59,7 +59,7 @@ public class ProductManager : IProductService
     [CacheAspect]
     public IDataResult<List<Product>> GetAll()
     {
-        if (DateTime.Now.Hour == 15)
+        if (DateTime.Now.Hour == 6)
         {
             return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
         }

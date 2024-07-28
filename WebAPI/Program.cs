@@ -37,6 +37,7 @@ builder.Services.AddDependencyResolvers(new ICoreModule[]
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddCors();
 builder.Services.AddSingleton<IHttpContextAccessor,HttpContextAccessor>();
 //builder.Services.AddSingleton<IProductService, ProductManager>();
 //builder.Services.AddSingleton<IProductDal, EfProductDal>();
@@ -56,6 +57,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors(builder=>builder.WithOrigins("http://localhost:4200").AllowAnyHeader());
 
 app.UseHttpsRedirection();
 
