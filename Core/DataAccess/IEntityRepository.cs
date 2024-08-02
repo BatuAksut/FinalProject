@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Core.DataAccess
 {
-    //newlenebilir,IEntity alan bir class olmalı
+    
     public interface IEntityRepository<T> where T : class, IEntity,new()
     {
         List<T> GetAll(Expression<Func<T,bool>> filter= null);

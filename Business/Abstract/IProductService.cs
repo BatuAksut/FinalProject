@@ -25,5 +25,6 @@ namespace Business.Abstract
         IResult Update(Product product);
 
         public IResult TransactionalOperation(Product product);
-	}
+        
+    }
 }
